@@ -2,18 +2,20 @@
 
 import { Button, ButtonProps } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import { generatePath, RouteParams } from '@/config/routes';
 
 interface NavigationButtonProps extends Omit<ButtonProps, 'onClick'> {
-  href: string;
+  to: string;
+  params?: RouteParams;
 }
 
-export default function NavigationButton({ href, ...props }: NavigationButtonProps) {
+export default function NavigationButton({ to, params, ...props }: NavigationButtonProps) {
   const router = useRouter();
 
   return (
     <Button
       {...props}
-      onClick={() => router.push(href)}
+      onClick={() => router.push(generatePath(to, params))}
     />
   );
 }
