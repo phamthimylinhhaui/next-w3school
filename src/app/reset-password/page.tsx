@@ -1,17 +1,17 @@
 'use client';
 
-import { Box, Button, Container, TextField, Typography, Link } from '@mui/material';
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 
-export default function LoginPage() {
+export default function ResetPasswordPage() {
   const [formData, setFormData] = useState({
-    email: '',
     password: '',
+    retypePassword: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
+    // Handle reset password logic here
   };
 
   return (
@@ -36,7 +36,7 @@ export default function LoginPage() {
           }}
         >
           <Typography component="h1" variant="h4" sx={{ mb: '12px' }}>
-            Login
+            Reset Password
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ mb: '24px' }}>
             We're so excited to see you again!
@@ -44,39 +44,6 @@ export default function LoginPage() {
 
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: '100%' }}>
             <Box sx={{ mb: '20px' }}>
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  mb: '8px',
-                }}
-              >
-                EMAIL
-                <Box
-                  component="span"
-                  sx={{
-                    color: 'error.main',
-                    ml: '4px',
-                  }}
-                >
-                  *
-                </Box>
-              </Typography>
-              <TextField
-                required
-                fullWidth
-                id="email"
-                name="email"
-                autoComplete="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              />
-            </Box>
-
-            <Box sx={{ mb: '16px' }}>
               <Typography
                 variant="caption"
                 color="text.secondary"
@@ -103,28 +70,44 @@ export default function LoginPage() {
                 name="password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               />
             </Box>
 
-            <Link
-              href="#"
-              variant="body2"
-              sx={{
-                color: 'primary.main',
-                textDecoration: 'none',
-                display: 'block',
-                mb: '20px',
-                '&:hover': {
-                  textDecoration: 'underline',
-                },
-              }}
-            >
-              Forgot your password?
-            </Link>
+            <Box sx={{ mb: '24px' }}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  mb: '8px',
+                }}
+              >
+                RETYPE PASSWORD
+                <Box
+                  component="span"
+                  sx={{
+                    color: 'error.main',
+                    ml: '4px',
+                  }}
+                >
+                  *
+                </Box>
+              </Typography>
+              <TextField
+                required
+                fullWidth
+                name="retypePassword"
+                type="password"
+                id="retypePassword"
+                placeholder="Retype your password"
+                value={formData.retypePassword}
+                onChange={(e) => setFormData({ ...formData, retypePassword: e.target.value })}
+              />
+            </Box>
 
             <Button
               type="submit"
@@ -135,7 +118,7 @@ export default function LoginPage() {
                 color: '#FFF',
               }}
             >
-              Login/Register
+              Reset Password
             </Button>
           </Box>
         </Box>

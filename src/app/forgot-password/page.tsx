@@ -1,17 +1,14 @@
 'use client';
 
-import { Box, Button, Container, TextField, Typography, Link } from '@mui/material';
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 
-export default function LoginPage() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+export default function ForgotPasswordPage() {
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
+    // Handle send code logic here
   };
 
   return (
@@ -36,7 +33,7 @@ export default function LoginPage() {
           }}
         >
           <Typography component="h1" variant="h4" sx={{ mb: '12px' }}>
-            Login
+            Forgot Password
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ mb: '24px' }}>
             We're so excited to see you again!
@@ -71,60 +68,10 @@ export default function LoginPage() {
                 name="email"
                 autoComplete="email"
                 placeholder="Enter your email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Box>
-
-            <Box sx={{ mb: '16px' }}>
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  mb: '8px',
-                }}
-              >
-                PASSWORD
-                <Box
-                  component="span"
-                  sx={{
-                    color: 'error.main',
-                    ml: '4px',
-                  }}
-                >
-                  *
-                </Box>
-              </Typography>
-              <TextField
-                required
-                fullWidth
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              />
-            </Box>
-
-            <Link
-              href="#"
-              variant="body2"
-              sx={{
-                color: 'primary.main',
-                textDecoration: 'none',
-                display: 'block',
-                mb: '20px',
-                '&:hover': {
-                  textDecoration: 'underline',
-                },
-              }}
-            >
-              Forgot your password?
-            </Link>
 
             <Button
               type="submit"
@@ -135,7 +82,7 @@ export default function LoginPage() {
                 color: '#FFF',
               }}
             >
-              Login/Register
+              Send Code
             </Button>
           </Box>
         </Box>
