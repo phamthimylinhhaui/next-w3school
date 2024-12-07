@@ -1,5 +1,6 @@
 import { Box, Container, Typography, Card, CardContent } from '@mui/material';
 import NavigationButton from '@/components/NavigationButton';
+import { routes } from '@/config/routes';
 
 interface Props {
   params: {
@@ -25,7 +26,7 @@ export default function ChallengePage({ params }: Props) {
             <NavigationButton
               variant="contained"
               color="primary"
-              href={`/challenges/${params.id}/start`}
+              to={routes.challenges.start(params.id)}
             >
               Start Challenge
             </NavigationButton>
@@ -35,7 +36,7 @@ export default function ChallengePage({ params }: Props) {
       <Box sx={{ mt: 2 }}>
         <NavigationButton
           variant="outlined"
-          href="/courses"
+          to={routes.courses.list}
         >
           Back to Courses
         </NavigationButton>
