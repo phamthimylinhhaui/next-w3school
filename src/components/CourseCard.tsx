@@ -3,8 +3,10 @@
 import { Box, Card, CardContent, CardMedia, Typography, Chip } from '@mui/material';
 import Image from 'next/image';
 import { LinearProgress } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 interface CourseCardProps {
+  id: number;
   title: string;
   image: string;
   progress?: {
@@ -15,8 +17,15 @@ interface CourseCardProps {
   comingSoon?: boolean;
 }
 
-export default function CourseCard({ title, image, progress, tags, comingSoon }: CourseCardProps) {
+export default function CourseCard({ id, title, image, progress, tags, comingSoon }: CourseCardProps) {
+  const router = useRouter();
   const progressValue = progress ? (progress.current / progress.total) * 100 : 0;
+
+  const handleClick = () => {
+    if (!comingSoon) {
+      router.push(`/courses/${id}/challenges`);
+    }
+  };
 
   return (
     <Card
@@ -27,7 +36,13 @@ export default function CourseCard({ title, image, progress, tags, comingSoon }:
         backgroundColor: '#1E1F25',
         borderRadius: 2,
         overflow: 'hidden',
+        cursor: comingSoon ? 'default' : 'pointer',
+        transition: 'transform 0.2s ease-in-out',
+        '&:hover': {
+          transform: comingSoon ? 'none' : 'translateY(-4px)',
+        },
       }}
+      onClick={handleClick}
     >
       <Box sx={{ position: 'relative', pt: '56.25%' /* 16:9 aspect ratio */ }}>
         <Image
@@ -47,7 +62,6 @@ export default function CourseCard({ title, image, progress, tags, comingSoon }:
             fontWeight: 600,
             mb: 1,
             color: '#F2F3F5',
-            minHeight: '50px',
           }}
         >
           {title}
@@ -59,7 +73,6 @@ export default function CourseCard({ title, image, progress, tags, comingSoon }:
               color: '#9B9C9E',
               fontSize: '14px',
               mb: 1,
-              height: '28px',
             }}
           >
             Coming Soon
