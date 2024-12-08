@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Box, Button, Typography, IconButton, ButtonGroup } from '@mui/material';
 import Editor from '@monaco-editor/react';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -7,6 +8,7 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import CodeIcon from '@mui/icons-material/Code';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
+import CompileSuccessModal from './CompileSuccessModal';
 
 interface CodeEditorSectionProps {
   initialCode: string;
@@ -14,12 +16,20 @@ interface CodeEditorSectionProps {
 }
 
 export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSectionProps) {
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const handleEditorChange = (value: string | undefined) => {
     // Handle editor changes if needed
   };
 
   const handleFormat = () => {
     // Handle format
+  };
+
+  const handleCompile = () => {
+    // Here you would typically handle the compilation
+    // For now, we'll just show the success modal
+    setShowSuccessModal(true);
   };
 
   return (
@@ -141,9 +151,6 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
                   bgcolor: '#F3F4F6',
                   borderColor: '#E5E7EB',
                 },
-                '&:not(:last-child)': {
-                  borderRight: '1px solid #E5E7EB',
-                },
               },
               '& .MuiButton-root:last-child': {
                 bgcolor: '#10B981',
@@ -164,7 +171,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
             </Button>
             <Button
               startIcon={<ConstructionIcon />}
-              onClick={() => onRun(initialCode)}>
+              onClick={handleCompile}>
               Compile
             </Button>
             <Button
@@ -175,6 +182,14 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
           </Box>
         </Box>
       </Box>
+
+      {/* Success Modal */}
+      <CompileSuccessModal
+        open={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        points={10}
+        totalPoints={36}
+      />
     </Box>
   );
 }
