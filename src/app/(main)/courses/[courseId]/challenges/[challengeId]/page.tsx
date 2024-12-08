@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Container, Grid, Typography, Chip } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import CodeEditorSection from '@/components/challenge/CodeEditorSection';
 import OutputConsole from '@/components/challenge/OutputConsole';
 import ChallengeContent from '@/components/challenge/ChallengeContent';
@@ -36,73 +36,59 @@ export default function ChallengeDetailPage({
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <Container 
-        maxWidth={false} 
-        sx={{ 
-          mt: { xs: 2, md: 3 },
-          px: { xs: 2, md: 4 },
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          gap: 2,
-          height: 'calc(100vh - 100px)',
+    <Box 
+      sx={{ 
+        display: 'flex',
+        height: 'calc(100vh - 100px)'
+      }}
+    >
+      {/* Left Column */}
+      <Box
+        sx={{
+          width: { xs: '100%', md: '40%' },
+          minWidth: { md: '500px' },
+          maxWidth: { md: '600px' },
+          overflow: 'auto',
+            p: 2,
         }}
       >
-        {/* Left Column */}
-        <Box
-          sx={{
-            width: { xs: '100%', md: '40%' },
-            minWidth: { md: '500px' },
-            maxWidth: { md: '600px' },
-            borderRadius: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: 'white',
-            color: 'black',
-          }}
-        >
-          <ChallengeContent
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-          />
-        </Box>
+        <ChallengeContent
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+        />
+      </Box>
 
-        {/* Right Column */}
+      {/* Right Column */}
+      <Box
+        sx={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          p: 2,
+          overflow: 'hidden',
+        }}
+      >
         <Box
           sx={{
             flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-            height: '100%',
+            minHeight: 0,
           }}
         >
-          <Box
-            sx={{
-              flex: 1,
-              minHeight: '60vh',
-              bgcolor: '#1E1F25',
-              borderRadius: 2,
-              overflow: 'hidden',
-            }}
-          >
-            <CodeEditorSection
-              initialCode={initialCode}
-              onRun={handleRunCode}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              height: '200px',
-              bgcolor: '#1E1F25',
-              borderRadius: 2,
-            }}
-          >
-            <OutputConsole output={output} error={error} />
-          </Box>
+          <CodeEditorSection
+            initialCode={initialCode}
+            onRun={handleRunCode}
+          />
         </Box>
-      </Container>
+
+        <Box
+          sx={{
+            height: '200px',
+          }}
+        >
+          <OutputConsole output={output} error={error} />
+        </Box>
+      </Box>
     </Box>
   );
 }

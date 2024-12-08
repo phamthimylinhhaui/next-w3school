@@ -37,7 +37,10 @@ export default function ChallengeContent({ activeTab, onTabChange }: ChallengeCo
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, backgroundColor: 'white',
+        color: 'black',
+        borderRadius: 2,
+        height: '100%'}}>
       <Box>
         <Tabs
           value={activeTab}
