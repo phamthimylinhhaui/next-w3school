@@ -131,7 +131,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
             gap: 1,
           }}
         >
-          <Box
+          <ButtonGroup
             variant="contained"
             size="small"
             sx={{
@@ -179,7 +179,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
               onClick={() => onRun(initialCode)}>
               Run
             </Button>
-          </Box>
+          </ButtonGroup>
         </Box>
       </Box>
 
