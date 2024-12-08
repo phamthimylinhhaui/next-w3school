@@ -2,7 +2,6 @@
 
 import { Box, Container, Grid, Typography } from '@mui/material';
 import CourseCard from '@/components/CourseCard';
-import Header from '@/components/Header';
 
 const courses = [
   {
@@ -47,8 +46,6 @@ const courses = [
 export default function CoursesPage() {
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <Header />
-      
       <Container maxWidth="lg" sx={{ mt: 6 }}>
         <Typography
           component="h1"

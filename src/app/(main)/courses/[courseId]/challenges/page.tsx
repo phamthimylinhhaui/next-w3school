@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Box, Container, Typography, LinearProgress, useTheme, useMediaQuery } from '@mui/material';
 import ChallengeCard from '@/components/ChallengeCard';
 import ChallengeFilters from '@/components/ChallengeFilters';
-import Header from '@/components/Header';
 
 // Mock data - replace with API call later
 const mockChallenges = [
@@ -75,8 +74,6 @@ export default function ChallengePage({ params }: { params: { courseId: string }
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <Header />
-      
       <Container 
         maxWidth="lg" 
         sx={{ 
@@ -140,7 +137,8 @@ export default function ChallengePage({ params }: { params: { courseId: string }
         }}>
           {challenges.map((challenge) => (
             <ChallengeCard
-              key={challenge.id}
+              id={challenge.id}
+              courseId={params.courseId}
               title={challenge.title}
               difficulty={challenge.difficulty}
               status={challenge.status}

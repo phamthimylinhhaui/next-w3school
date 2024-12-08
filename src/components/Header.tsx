@@ -5,9 +5,7 @@ import {
   AppBar,
   Box,
   Button,
-  Container,
   Toolbar,
-  Typography,
   IconButton,
   Menu,
   MenuItem,
@@ -21,7 +19,7 @@ import { routes } from '@/config/routes';
 
 const menuItems = [
   { label: 'Courses', path: '/courses' },
-  { label: 'Challenges', path: '/challenges/1' },
+  { label: 'Challenges', path: '/courses/1/challenges' },
 ];
 
 export default function Header() {
@@ -47,8 +45,8 @@ export default function Header() {
   const isActive = (path: string) => pathname.startsWith(path);
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-      <Container maxWidth="lg">
+    <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none', px: 2 }}>
+      <Box>
         <Toolbar
           disableGutters
           sx={{
@@ -167,7 +165,7 @@ export default function Header() {
             </Box>
           )}
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 }
