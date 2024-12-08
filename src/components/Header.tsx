@@ -19,7 +19,7 @@ import { routes } from '@/config/routes';
 
 const menuItems = [
   { label: 'Courses', path: '/courses' },
-  { label: 'Challenges', path: '/challenges/1' },
+  { label: 'Challenges', path: '/courses/1/challenges' },
 ];
 
 export default function Header() {

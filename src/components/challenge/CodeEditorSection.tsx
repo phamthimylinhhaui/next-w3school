@@ -1,9 +1,12 @@
 'use client';
 
-import { Box, Button, Typography, IconButton } from '@mui/material';
+import { Box, Button, Typography, IconButton, ButtonGroup } from '@mui/material';
 import Editor from '@monaco-editor/react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import CodeIcon from '@mui/icons-material/Code';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 
 interface CodeEditorSectionProps {
   initialCode: string;
@@ -13,6 +16,10 @@ interface CodeEditorSectionProps {
 export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSectionProps) {
   const handleEditorChange = (value: string | undefined) => {
     // Handle editor changes if needed
+  };
+
+  const handleFormat = () => {
+    // Handle format
   };
 
   return (
@@ -35,6 +42,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
           px: 2,
           py: 1,
           borderBottom: '1px solid #E5E7EB',
+          position: 'relative',
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -107,48 +115,64 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
         <Box
           sx={{
             position: 'absolute',
-            bottom: 16,
-            right: 16,
+            bottom: 12,
+            right: 12,
             display: 'flex',
             gap: 1,
           }}
         >
-          <Button
+          <Box
             variant="contained"
-            onClick={() => onRun(initialCode)}
+            size="small"
             sx={{
-              backgroundColor: '#4CAF50',
-              color: '#FFF',
-              textTransform: 'none',
-              fontSize: '14px',
-              px: 3,
-              py: 1,
-              borderRadius: 1,
-              '&:hover': {
-                backgroundColor: '#45A049',
+                display: 'flex',
+                gap: 1,
+              '& .MuiButton-root': {
+                height: '32px',
+                bgcolor: 'transparent',
+                color: 'black',
+                fontSize: '13px',
+                textTransform: 'none',
+                px: 2,
+                py: 0.5,
+                border: '1px solid #E5E7EB',
+                borderRadius: 2,
+                '&:hover': {
+                  bgcolor: '#F3F4F6',
+                  borderColor: '#E5E7EB',
+                },
+                '&:not(:last-child)': {
+                  borderRight: '1px solid #E5E7EB',
+                },
+              },
+              '& .MuiButton-root:last-child': {
+                bgcolor: '#10B981',
+                color: 'white',
+                borderColor: '#10B981',
+                '&:hover': {
+                  bgcolor: '#059669',
+                  borderColor: '#059669',
+                },
               },
             }}
           >
-            Run
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => onRun(initialCode)}
-            sx={{
-              backgroundColor: '#4C6FFF',
-              color: '#FFF',
-              textTransform: 'none',
-              fontSize: '14px',
-              px: 3,
-              py: 1,
-              borderRadius: 1,
-              '&:hover': {
-                backgroundColor: '#3B5EEE',
-              },
-            }}
-          >
-            Compile
-          </Button>
+            <Button
+              startIcon={<CodeIcon />}
+              onClick={handleFormat}
+            >
+              Format
+            </Button>
+            <Button
+                startIcon={<ConstructionIcon />}
+                onClick={() => onRun(initialCode)}>
+              Compile
+            </Button>
+            <Button
+                startIcon={<PlayArrowOutlinedIcon />}
+                onClick={() => onRun(initialCode)}>
+              Run
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
