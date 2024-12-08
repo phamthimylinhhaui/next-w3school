@@ -5,6 +5,7 @@ export const routes = {
     challenges: (courseId: number | string) => `/challenges/${courseId}`,
   },
   challenges: {
+    list: '/',
     detail: (id: string | number) => `/challenges/${id}`,
     start: (id: string | number) => `/challenges/${id}/start`,
   },

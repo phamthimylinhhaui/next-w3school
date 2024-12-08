@@ -1,55 +1,77 @@
-import { Box, Container, Grid, Card, CardContent, CardActions, Typography } from '@mui/material';
-import NavigationButton from '@/components/NavigationButton';
-import { routes } from '@/config/routes';
+'use client';
+
+import { Box, Container, Grid, Typography } from '@mui/material';
+import CourseCard from '@/components/CourseCard';
+import Header from '@/components/Header';
 
 const courses = [
   {
     id: 1,
-    title: 'HTML Fundamentals',
-    description: 'Learn the basics of HTML and web structure',
+    title: 'PyTeal Tutorial for Beginners',
+    image: '/assets/images/courses/default.png',
+    progress: {
+      current: 10,
+      total: 36,
+    },
+    tags: ['#algorand', '#beginner'],
   },
   {
     id: 2,
-    title: 'CSS Mastery',
-    description: 'Master CSS styling and responsive design',
+    title: 'NFT Marketplace Algorand TEALScript',
+    image: '/assets/images/courses/default.png',
+    progress: {
+      current: 0,
+      total: 12,
+    },
+    tags: ['#algorand', '#pro'],
   },
   {
     id: 3,
-    title: 'JavaScript Essentials',
-    description: 'Get started with JavaScript programming',
+    title: 'TEALScript Tutorial Beginner',
+    image: '/assets/images/courses/default.png',
+    progress: {
+      current: 12,
+      total: 12,
+    },
+    tags: ['#algorand', '#beginner'],
+  },
+  {
+    id: 4,
+    title: 'Beaker for Beginner',
+    image: '/assets/images/courses/default.png',
+    comingSoon: true,
+    tags: ['#algorand', '#beginner'],
   },
 ];
 
 export default function CoursesPage() {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Available Courses
-      </Typography>
-      <Grid container spacing={4}>
-        {courses.map((course) => (
-          <Grid item key={course.id} xs={12} sm={6} md={4}>
-            <Card>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {course.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {course.description}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <NavigationButton
-                  size="small"
-                  to={routes.courses.challenges(course.id)}
-                >
-                  View Challenges
-                </NavigationButton>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+      <Header />
+      
+      <Container maxWidth="lg" sx={{ mt: 6 }}>
+        <Typography
+          component="h1"
+          variant="h4"
+          sx={{
+            color: '#F2F3F5',
+            fontSize: '32px',
+            fontWeight: 600,
+            textAlign: 'center',
+            mb: 4,
+          }}
+        >
+          Courses
+        </Typography>
+
+        <Grid container spacing={3}>
+          {courses.map((course, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <CourseCard {...course} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }
