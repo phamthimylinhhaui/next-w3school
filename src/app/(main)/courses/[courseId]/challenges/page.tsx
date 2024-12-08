@@ -140,7 +140,8 @@ export default function ChallengePage({ params }: { params: { courseId: string }
         }}>
           {challenges.map((challenge) => (
             <ChallengeCard
-              key={challenge.id}
+              id={challenge.id}
+              courseId={params.courseId}
               title={challenge.title}
               difficulty={challenge.difficulty}
               status={challenge.status}
