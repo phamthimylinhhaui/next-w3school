@@ -28,7 +28,7 @@ export default function ChallengeCard({ title, difficulty, status, onSolve }: Ch
           '&:last-child': { pb: 2 },
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 1 }}>
           <Typography
             variant="h6"
             sx={{
@@ -39,6 +39,7 @@ export default function ChallengeCard({ title, difficulty, status, onSolve }: Ch
           >
             {title}
           </Typography>
+          <Box>
           <Chip
             label={difficulty}
             size="small"
@@ -49,10 +50,11 @@ export default function ChallengeCard({ title, difficulty, status, onSolve }: Ch
               height: '24px',
               textTransform: 'lowercase',
               '& .MuiChip-label': {
-                px: 1,
+                px: 2,
               },
             }}
           />
+          </Box>
         </Box>
 
         <Button
@@ -63,6 +65,7 @@ export default function ChallengeCard({ title, difficulty, status, onSolve }: Ch
             color: '#FFF',
             textTransform: 'none',
             fontSize: '14px',
+            p: 1,
             '&:hover': {
               backgroundColor: status === 'solved' ? '#45A049' : '#3B5EEE',
             },
