@@ -41,17 +41,17 @@ export default function ChallengeContent({
   };
 
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      flex: 1, 
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
       backgroundColor: 'white',
       color: 'black',
       borderRadius: 2,
       height: '100%'
     }}>
-      <Box sx={{ 
-        display: 'flex', 
+      <Box sx={{
+        display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1px solid #E5E7EB',
@@ -79,17 +79,17 @@ export default function ChallengeContent({
             },
           }}
         >
-          <Tab 
+          <Tab
             label={<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               Prompt
-              <Box sx={{ 
-                width: 6, 
-                height: 6, 
+              <Box sx={{
+                width: 6,
+                height: 6,
                 bgcolor: 'red',
-                borderRadius: '50%' 
+                borderRadius: '50%'
               }} />
-            </Box>} 
-            value="prompt" 
+            </Box>}
+            value="prompt"
           />
           <Tab label="Video" value="video" />
           <Tab label="Tasks" value="tasks" />
@@ -114,38 +114,38 @@ export default function ChallengeContent({
           Hello World
         </Typography>
         <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-          <Chip 
-            label="solidity" 
+          <Chip
+            label="solidity"
             size="small"
-            sx={{ 
+            sx={{
               bgcolor: '#FEF3C7',
               color: '#92400E',
               borderRadius: 1,
               height: '24px',
               fontSize: '12px'
-            }} 
+            }}
           />
-          <Chip 
-            label="easy" 
+          <Chip
+            label="easy"
             size="small"
-            sx={{ 
+            sx={{
               bgcolor: '#D1FAE5',
               color: '#065F46',
               borderRadius: 1,
               height: '24px',
               fontSize: '12px'
-            }} 
+            }}
           />
-          <Chip 
-            label="app" 
+          <Chip
+            label="app"
             size="small"
-            sx={{ 
+            sx={{
               bgcolor: '#E0E7FF',
               color: '#3730A3',
               borderRadius: 1,
               height: '24px',
               fontSize: '12px'
-            }} 
+            }}
           />
         </Box>
         <Typography variant="body2" sx={{ color: '#6B7280', mb: 2 }}>
@@ -174,9 +174,9 @@ export default function ChallengeContent({
         </Typography>
       </TabPanel>
 
-      <Box 
-        sx={{ 
-          display: 'flex', 
+      <Box
+        sx={{
+          display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           borderTop: '1px solid #E5E7EB',
@@ -195,7 +195,7 @@ export default function ChallengeContent({
         >
           prev
         </Button>
-          |
+        |
         <Button
           endIcon={<ChevronRightIcon />}
           sx={{

@@ -23,8 +23,8 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
   };
 
   return (
-    <Box 
-      sx={{ 
+    <Box
+      sx={{
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -59,7 +59,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
         <Box sx={{ display: 'flex', gap: 1 }}>
           <IconButton
             size="small"
-            sx={{ 
+            sx={{
               color: '#6B7280',
               '&:hover': {
                 backgroundColor: '#F3F4F6',
@@ -70,7 +70,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
           </IconButton>
           <IconButton
             size="small"
-            sx={{ 
+            sx={{
               color: '#6B7280',
               '&:hover': {
                 backgroundColor: '#F3F4F6',
@@ -110,7 +110,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
             },
           }}
         />
-        
+
         {/* Action Buttons */}
         <Box
           sx={{
@@ -125,8 +125,8 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
             variant="contained"
             size="small"
             sx={{
-                display: 'flex',
-                gap: 1,
+              display: 'flex',
+              gap: 1,
               '& .MuiButton-root': {
                 height: '32px',
                 bgcolor: 'transparent',
@@ -163,13 +163,13 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
               Format
             </Button>
             <Button
-                startIcon={<ConstructionIcon />}
-                onClick={() => onRun(initialCode)}>
+              startIcon={<ConstructionIcon />}
+              onClick={() => onRun(initialCode)}>
               Compile
             </Button>
             <Button
-                startIcon={<PlayArrowOutlinedIcon />}
-                onClick={() => onRun(initialCode)}>
+              startIcon={<PlayArrowOutlinedIcon />}
+              onClick={() => onRun(initialCode)}>
               Run
             </Button>
           </Box>
