@@ -2,8 +2,10 @@
 
 import { Box, Button, Container, TextField, Typography, Link } from '@mui/material';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -12,6 +14,7 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle login logic here
+    router.push('/');
   };
 
   return (
@@ -111,7 +114,7 @@ export default function LoginPage() {
             </Box>
 
             <Link
-              href="#"
+              href="/forgot-password"
               variant="body2"
               sx={{
                 color: 'primary.main',
@@ -134,6 +137,7 @@ export default function LoginPage() {
               sx={{
                 color: '#FFF',
               }}
+              onClick={handleSubmit}
             >
               Login/Register
             </Button>

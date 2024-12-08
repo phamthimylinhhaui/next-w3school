@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Tabs, Tab, Typography } from '@mui/material';
+import { Box, Tabs, Tab, Typography, Chip } from '@mui/material';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -38,12 +38,13 @@ export default function ChallengeContent({ activeTab, onTabChange }: ChallengeCo
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'rgba(255, 255, 255, 0.1)' }}>
+      <Box>
         <Tabs
           value={activeTab}
           onChange={handleChange}
           aria-label="challenge content tabs"
           sx={{
+            color: '#9B9C9E',
             '& .MuiTabs-indicator': {
               backgroundColor: '#4C6FFF',
             },
@@ -53,7 +54,8 @@ export default function ChallengeContent({ activeTab, onTabChange }: ChallengeCo
               fontSize: '14px',
               minHeight: '48px',
               '&.Mui-selected': {
-                color: '#F2F3F5',
+                color: 'black',
+                fontWeight: 600,
               },
             },
           }}
@@ -61,39 +63,75 @@ export default function ChallengeContent({ activeTab, onTabChange }: ChallengeCo
           <Tab label="Prompt" value="prompt" />
           <Tab label="Video" value="video" />
           <Tab label="Tasks" value="tasks" />
+          <Tab label="Tests" value="tests" />
           <Tab label="Solution" value="solution" />
         </Tabs>
       </Box>
 
       <TabPanel value={activeTab} tabId="prompt">
-        <Typography
-          sx={{
-            color: '#F2F3F5',
-            fontSize: '14px',
-            lineHeight: 1.6,
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          Write a smart contract that stores and retrieves a string value.
+        <Box display='flex' flexDirection='column' gap={1}>
+          <Box>
+            <Typography
+              variant="h5"
+              sx={{
+                color: 'light',
+                fontSize: '24px',
+                fontWeight: 600,
+              }}
+            >
+              Hello World
+            </Typography>
+            <Chip
+              label="#beginner"
+              size="small"
+              sx={{
+                backgroundColor: '#4CAF50',
+                color: '#000',
+                fontSize: '12px',
+                height: '24px',
+                '& .MuiChip-label': { px: 1 },
+              }}
+            />
+          </Box>
+          <Typography sx={{ color: 'black', fontSize: '14px' }}>
+            100 points
+          </Typography>
 
-          Complete all the tasks and pass all the tests.
-        </Typography>
+          <Typography
+            sx={{
+              color: 'black',
+              fontSize: '14px',
+              lineHeight: 1.6,
+              whiteSpace: 'pre-wrap',
+            }}
+          >
+            Write a smart contract that stores and retrieves a string value.
+
+            Complete all the tasks and pass all the tests.
+          </Typography>
+        </Box>
       </TabPanel>
 
       <TabPanel value={activeTab} tabId="video">
-        <Typography sx={{ color: '#9B9C9E' }}>
+        <Typography sx={{ color: 'black' }}>
           Video content coming soon...
         </Typography>
       </TabPanel>
 
       <TabPanel value={activeTab} tabId="tasks">
-        <Typography sx={{ color: '#9B9C9E' }}>
+        <Typography sx={{ color: 'black' }}>
           Tasks will be displayed here...
         </Typography>
       </TabPanel>
 
+      <TabPanel value={activeTab} tabId="test">
+        <Typography sx={{ color: 'black' }}>
+          Tests will be displayed here...
+        </Typography>
+      </TabPanel>
+
       <TabPanel value={activeTab} tabId="solution">
-        <Typography sx={{ color: '#9B9C9E' }}>
+        <Typography sx={{ color: 'black' }}>
           Solution will be revealed after completing the challenge...
         </Typography>
       </TabPanel>
