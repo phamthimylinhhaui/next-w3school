@@ -18,7 +18,7 @@ export default function CodeEditorSection({ initialCode, onRun }: CodeEditorSect
       <Editor
         height="100%"
         defaultLanguage="solidity"
-        theme="vs-dark"
+        theme="vs-light"
         value={initialCode}
         onChange={handleEditorChange}
         options={{

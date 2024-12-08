@@ -88,6 +88,7 @@ export default function ChallengeCard({
             color: '#FFF',
             textTransform: 'none',
             fontSize: '14px',
+            p: 1,
             '&:hover': {
               backgroundColor: status === 'solved' ? '#45A049' : '#3B5EEE',
             },
