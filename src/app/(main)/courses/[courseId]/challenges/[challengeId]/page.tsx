@@ -45,9 +45,8 @@ export default function ChallengeDetailPage({
       {/* Left Column */}
       <Box
         sx={{
-          width: { xs: '100%', md: '40%' },
+          width: { xs: '100%', md: '45%' },
           minWidth: { md: '500px' },
-          maxWidth: { md: '600px' },
           overflow: 'auto',
             p: 2,
         }}

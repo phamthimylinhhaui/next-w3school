@@ -1,24 +1,27 @@
 'use client';
 
-import { Box, Tabs, Tab, Typography, Chip } from '@mui/material';
+import { Box, Tabs, Tab, Typography, Chip, IconButton, Button } from '@mui/material';
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 interface TabPanelProps {
   children?: React.ReactNode;
-  value: string;
   tabId: string;
+  value: string;
 }
 
-function TabPanel({ children, value, tabId }: TabPanelProps) {
+function TabPanel(props: TabPanelProps) {
+  const { children, value, tabId } = props;
+
   return (
     <Box
       role="tabpanel"
       hidden={value !== tabId}
-      id={`challenge-tabpanel-${tabId}`}
-      aria-labelledby={`challenge-tab-${tabId}`}
       sx={{
         p: 3,
         flex: 1,
-        overflow: 'auto',
+        overflow: 'auto'
       }}
     >
       {value === tabId && children}
@@ -26,36 +29,49 @@ function TabPanel({ children, value, tabId }: TabPanelProps) {
   );
 }
 
-interface ChallengeContentProps {
+export default function ChallengeContent({
+  activeTab,
+  onTabChange,
+}: {
   activeTab: string;
   onTabChange: (tab: string) => void;
-}
-
-export default function ChallengeContent({ activeTab, onTabChange }: ChallengeContentProps) {
+}) {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     onTabChange(newValue);
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, backgroundColor: 'white',
-        color: 'black',
-        borderRadius: 2,
-        height: '100%'}}>
-      <Box>
+    <Box sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      flex: 1, 
+      backgroundColor: 'white',
+      color: 'black',
+      borderRadius: 2,
+      height: '100%'
+    }}>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderBottom: '1px solid #E5E7EB',
+        px: 2
+      }}>
         <Tabs
           value={activeTab}
           onChange={handleChange}
-          aria-label="challenge content tabs"
           sx={{
-            color: '#9B9C9E',
+            minHeight: '48px',
             '& .MuiTabs-indicator': {
               backgroundColor: '#4C6FFF',
             },
             '& .MuiTab-root': {
-              color: '#9B9C9E',
               textTransform: 'none',
               fontSize: '14px',
+              fontWeight: 500,
+              color: '#6B7280',
               minHeight: '48px',
+              padding: '12px 16px',
               '&.Mui-selected': {
                 color: 'black',
                 fontWeight: 600,
@@ -63,81 +79,136 @@ export default function ChallengeContent({ activeTab, onTabChange }: ChallengeCo
             },
           }}
         >
-          <Tab label="Prompt" value="prompt" />
+          <Tab 
+            label={<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              Prompt
+              <Box sx={{ 
+                width: 6, 
+                height: 6, 
+                bgcolor: 'red',
+                borderRadius: '50%' 
+              }} />
+            </Box>} 
+            value="prompt" 
+          />
           <Tab label="Video" value="video" />
           <Tab label="Tasks" value="tasks" />
           <Tab label="Tests" value="tests" />
           <Tab label="Solution" value="solution" />
         </Tabs>
+        <IconButton
+          size="small"
+          sx={{
+            color: '#6B7280',
+            '&:hover': {
+              backgroundColor: '#F3F4F6',
+            },
+          }}
+        >
+          <FullscreenIcon fontSize="small" />
+        </IconButton>
       </Box>
 
       <TabPanel value={activeTab} tabId="prompt">
-        <Box display='flex' flexDirection='column' gap={1}>
-          <Box>
-            <Typography
-              variant="h5"
-              sx={{
-                color: 'light',
-                fontSize: '24px',
-                fontWeight: 600,
-              }}
-            >
-              Hello World
-            </Typography>
-            <Chip
-              label="#beginner"
-              size="small"
-              sx={{
-                backgroundColor: '#4CAF50',
-                color: '#000',
-                fontSize: '12px',
-                height: '24px',
-                '& .MuiChip-label': { px: 1 },
-              }}
-            />
-          </Box>
-          <Typography sx={{ color: 'black', fontSize: '14px' }}>
-            100 points
-          </Typography>
-
-          <Typography
-            sx={{
-              color: 'black',
-              fontSize: '14px',
-              lineHeight: 1.6,
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            Write a smart contract that stores and retrieves a string value.
-
-            Complete all the tasks and pass all the tests.
-          </Typography>
+        <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
+          Hello World
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+          <Chip 
+            label="solidity" 
+            size="small"
+            sx={{ 
+              bgcolor: '#FEF3C7',
+              color: '#92400E',
+              borderRadius: 1,
+              height: '24px',
+              fontSize: '12px'
+            }} 
+          />
+          <Chip 
+            label="easy" 
+            size="small"
+            sx={{ 
+              bgcolor: '#D1FAE5',
+              color: '#065F46',
+              borderRadius: 1,
+              height: '24px',
+              fontSize: '12px'
+            }} 
+          />
+          <Chip 
+            label="app" 
+            size="small"
+            sx={{ 
+              bgcolor: '#E0E7FF',
+              color: '#3730A3',
+              borderRadius: 1,
+              height: '24px',
+              fontSize: '12px'
+            }} 
+          />
         </Box>
+        <Typography variant="body2" sx={{ color: '#6B7280', mb: 2 }}>
+          100 points
+        </Typography>
+        <Typography color={"black"}>
+          Complete all the tasks and pass all the tests.
+        </Typography>
       </TabPanel>
 
       <TabPanel value={activeTab} tabId="video">
-        <Typography sx={{ color: 'black' }}>
-          Video content coming soon...
-        </Typography>
+        <Typography color={"black"}>Video content will be added soon...</Typography>
       </TabPanel>
 
       <TabPanel value={activeTab} tabId="tasks">
-        <Typography sx={{ color: 'black' }}>
-          Tasks will be displayed here...
-        </Typography>
+        <Typography color={"black"}>Tasks will be listed here...</Typography>
       </TabPanel>
 
-      <TabPanel value={activeTab} tabId="test">
-        <Typography sx={{ color: 'black' }}>
-          Tests will be displayed here...
-        </Typography>
+      <TabPanel value={activeTab} tabId="tests">
+        <Typography color={"black"}>Test cases will appear here...</Typography>
       </TabPanel>
 
       <TabPanel value={activeTab} tabId="solution">
-        <Typography sx={{ color: 'black' }}>
+        <Typography color={"black"}>
           Solution will be revealed after completing the challenge...
         </Typography>
       </TabPanel>
+
+      <Box 
+        sx={{ 
+          display: 'flex', 
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderTop: '1px solid #E5E7EB',
+          p: 2
+        }}
+      >
+        <Button
+          startIcon={<ChevronLeftIcon />}
+          sx={{
+            color: '#6B7280',
+            textTransform: 'none',
+            '&:hover': {
+              bgcolor: '#F3F4F6',
+            },
+          }}
+        >
+          prev
+        </Button>
+          |
+        <Button
+          endIcon={<ChevronRightIcon />}
+          sx={{
+            color: '#6B7280',
+            textTransform: 'none',
+            '&:hover': {
+              bgcolor: '#F3F4F6',
+            },
+          }}
+        >
+          next
+        </Button>
+      </Box>
     </Box>
   );
 }
