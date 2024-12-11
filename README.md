@@ -79,6 +79,33 @@ src/
    npm run build
    ```
 
+## Deployment
+
+This project is configured for deployment to GitHub Pages using GitHub Actions.
+
+### Automatic Deployment
+
+1. Push your changes to the `dev` branch
+2. GitHub Actions will automatically:
+   - Build the Next.js application
+   - Deploy to GitHub Pages
+   - Make it available at your GitHub Pages URL
+
+### Manual Deployment
+
+If you need to trigger a deployment manually:
+
+1. Go to your repository on GitHub
+2. Navigate to Actions tab
+3. Select "Deploy to GitHub Pages"
+4. Click "Run workflow"
+
+### Configuration Files
+
+- `.github/workflows/deploy.yml`: GitHub Actions workflow
+- `next.config.js`: Next.js configuration for static export
+- `package.json`: Project dependencies and scripts
+
 ## Development Guidelines
 
 - Follow TypeScript best practices
